@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: var(--third-color);
+}
+
+.item-side {
+    height: 100%;
+    width: 60%;
+    background: var(--main-color);
+    padding: var(--m);
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.domain-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: var(--xs) 0;
+}
+
+.checkout-side {
+    height: 100%;
+    width: 40%;
+    padding: var(--m);
+}
+
+#checkout-button {
+    background: var(--button-color);
+    margin-top: var(--l);
+}
+
+.remove-btn {
+    background: var(--third-color);
+}
+
+#totals {
+    margin-top: var(--l);
+}
+
+#totals p {
+    margin-top: var(--s);
+}

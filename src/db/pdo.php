@@ -1,15 +1,16 @@
 <?php
-require_once('../config/db.php');
+require_once __DIR__ . '/../config/db.php';
 
-try {
-    $username = DB_USER;
-    $password = DB_PASS;
-    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME.";charset=utf8mb4";;
+function get_pdo() {
+    try {
+        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME.";charset=utf8mb4";
 
-    $pdo = new PDO($dsn, DB_USER, DB_PASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO($dsn, DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
 
-    return $pdo;
-} catch (PDOException $e) {
-    echo ("connection failed: " . $e->getMessage());
+    } catch (PDOException $e) {
+        error_log("connection failed: " . $e->getMessage());
+    }
+    return null;
 }

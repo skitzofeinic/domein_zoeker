@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/api.php';
 
-
 class DomainSearchModel {
     private $apiUrl = API_URL . 'domains/search?with_price=true';
-
     public function searchDomains($domainNames)
     {
         $payload = json_encode($domainNames);

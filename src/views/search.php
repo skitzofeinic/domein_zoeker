@@ -5,26 +5,28 @@
     <title>Domain Search</title>
     <script src="/domein_zoeker/public/assets/js/search.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="public/assets/css/main.css">
+    <link rel="stylesheet" href="public/assets/css/search.css">
 </head>
 <body>
+<a id="orders" href="orders">Orders</a>
+<a id="cart" href="cart">Cart</a>
 
-<h1>Domain Search</h1>
+<div class="container">
+    <div class="hero">
+        <h1>Domain Search</h1>
 
-<form id="form">
-    <input type="text" id="domainName" name="domainName" placeholder="Enter domain name" required>
-    <input type="text" id="extension" name="extension" placeholder="Enter extension" required>
-    <button type="submit" id="addExtension">add</button>
-</form>
-    <button type="submit" id="search">Search</button>
+        <form id="form">
+            <input type="text" id="domainName" name="domainName" placeholder="Enter domain name" required>
+            <input type="text" id="extension" name="extension" placeholder="Enter extension" required>
+            <button type="button" id="addExtension">add</button>
+        </form>
+        <button type="submit" id="search">Search</button>
+    </div>
+    <div id="tldList">
+    </div>
 
-<div id="searchResults">
-<!--    mock data i want to populate make me a func-->
-    <div>
-        Example.com
-        <div>
-            15.00
-            <button>Buy</button>
-        </div>
+    <div id="searchResults">
     </div>
 </div>
 

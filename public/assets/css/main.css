@@ -1,0 +1,39 @@
+:root {
+    --dark-color:#1b1d25;
+    --main-color:#1e2029;
+    --sec-color:#21232d;
+    --third-color:#242631;
+    --button-color: #288ac3;
+
+    --xs: 16px;
+    --s: calc(var(--xs) * 3 / 2);
+    --m: calc(var(--s) * 3 / 2);
+    --l: calc(var(--m) * 3 / 2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    font-family: sans-serif;
+    color: white;
+}
+
+input {
+    background: var(--main-color);
+    padding: var(--xs);
+    outline: none;
+    border: none;
+}
+
+form {
+    margin: var(--xs) 0 var(--xs) 0;
+}
+
+button {
+    background: none;
+    outline: none;
+    border: none;
+    padding: var(--xs);
+    cursor: pointer;
+}

@@ -1,0 +1,71 @@
+.container {
+    background: var(--third-color);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+.hero {
+    padding: var(--l);
+    border-radius: 10px;
+    margin: var(--xs);
+}
+
+#search {
+    background: var(--button-color);
+    width: 100%;
+}
+
+#tldList {
+    display: flex;
+    margin: 10px;
+    padding-left: var(--xs);
+    gap: 2rem;
+    align-items: baseline;
+    max-width: 80%;
+    width: 60%;
+}
+
+#searchResults {
+    max-width: 80%;
+    width: 60%;
+    overflow-y: auto;
+}
+
+#searchResults .domain-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 1rem;
+    background: var(--sec-color);
+    padding: var(--xs);
+}
+
+#searchResults .domain-item .available-btn {
+    background: var(--button-color);
+}
+
+a {
+    position: fixed;
+    top: 20px;
+    padding: 10px 20px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+#orders {
+    left: 20px;
+}
+
+
+#cart {
+    right: 20px;
+}

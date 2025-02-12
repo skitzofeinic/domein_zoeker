@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2025 at 02:43 AM
+-- Generation Time: Feb 12, 2025 at 02:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,8 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `domain` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL
+  `extension` varchar(10) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `currency` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `domain`, `extension`, `price`, `currency`) VALUES
+(3, 'exa', 'com', 16.80, 'EUR');
 
 -- --------------------------------------------------------
 
@@ -92,7 +101,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
