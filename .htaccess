@@ -1,0 +1,12 @@
+RedirectMatch 302 ^/\.git /
+#
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^\.git/ - [F]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+    RewriteBase /domein_zoeker/
+</IfModule>
