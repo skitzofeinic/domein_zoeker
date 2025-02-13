@@ -3,18 +3,27 @@
 require_once __DIR__ . '/../models/DomainCartModel.php';
 
 
-class CartController {
+class CartController
+{
     private $cartModel;
 
-    public function __construct() {
-        $this->cartModel = new DomainCartModel(); // Assuming DomainCartModel is the class where cart actions are defined
+    public function __construct()
+    {
+        $this->cartModel = new DomainCartModel();
     }
 
-    public function index() {
+    public function index()
+    {
+        $cart_items = $this->cartModel->getCart();
+        $subtotal = $this->cartModel->getSubtotal();
+        $tax = $this->cartModel->getTax();
+        $total = $this->cartModel->getTotal();
+
         require __DIR__ . '/../views/cart.php';
     }
 
-    public function addToCart() {
+    public function addToCart()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $jsonData = file_get_contents('php://input');
             $data = json_decode($jsonData, true);
@@ -39,56 +48,46 @@ class CartController {
         }
     }
 
+    public function removeFromCart()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            if (!isset($data['domain'], $data['extension'])) {
+                echo "Invalid data received.";
+            }
+            $domain = $data['domain'];
+            $extension = $data['extension'];
 
-
-
-    public function removeFromCart() {
-        if (isset($_GET['domain']) && isset($_GET['extension'])) {
-            $domain = $_GET['domain'];
-            $extension = $_GET['extension'];
-
-            // Remove from cart
-            if ($this->cartModel->removeFromCart($domain, $extension)) {
-                echo "Domain removed from cart successfully!";
-            } else {
+            if (!$this->cartModel->removeFromCart($domain, $extension)) {
                 echo "Failed to remove domain from cart.";
             }
+
+            echo "Domain removed from cart successfully!";
         } else {
-            echo "Domain and extension must be provided.";
+            echo "Invalid data received.";
         }
     }
 
-    public function getCart() {
-        $cart = $this->cartModel->getCart();
-        if (!empty($cart)) {
-            echo "Cart contents: ";
-            print_r($cart);
+
+    public function clearCart()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            if (!isset($data['action']) || $data['action'] != 'clear_cart') {
+                echo json_encode(['success' => false, 'message' => 'Invalid request.']);
+            }
+
+            $result = $this->cartModel->clearCart();
+
+            if (!$result) {
+                echo json_encode(['success' => false, 'message' => 'Failed to clear the cart.']);
+            }
+            echo json_encode(['success' => true, 'message' => 'Cart has been cleared!']);
+
         } else {
-            echo "Your cart is empty!";
+            echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
         }
-    }
-
-    public function clearCart() {
-        $result = $this->cartModel->clearCart();
-        if ($result) {
-            echo "Cart has been cleared!";
-        } else {
-            echo "Failed to clear cart.";
-        }
-    }
-
-    public function getSubTotal() {
-        $subtotal = $this->cartModel->getSubTotal();
-        echo "Subtotal: " . $subtotal;
-    }
-
-    public function getTax() {
-        $tax = $this->cartModel->getTax();
-        echo "Tax: " . $tax;
-    }
-
-    public function getTotal() {
-        $total = $this->cartModel->getTotal();
-        echo "Total: " . $total;
     }
 }

@@ -3,6 +3,7 @@ session_start();
 
 require_once ('src/routes/homeRoute.php');
 require_once ('src/routes/cartRoute.php');
+require_once('src/routes/orderRoute.php');
 
 
 $basePath = 'domein_zoeker'; // Set your root path
@@ -29,6 +30,9 @@ switch (strtolower($path)) {
         break;
     case 'cart':
         cartRoute($action, $id);
+        break;
+    case 'order':
+        orderRoute($action, $id);
         break;
     default:
         echo '404 Not Found';

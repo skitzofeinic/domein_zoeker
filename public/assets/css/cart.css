@@ -2,7 +2,6 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    background: var(--third-color);
 }
 
 .item-side {
@@ -20,10 +19,10 @@
 }
 
 .domain-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    text-align: center;
-    justify-content: space-between;
+    gap: var(--xs);
     padding: var(--xs) 0;
 }
 
@@ -48,4 +47,14 @@
 
 #totals p {
     margin-top: var(--s);
+}
+
+.item-side-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-side-header button {
+    background: var(--button-color);
 }

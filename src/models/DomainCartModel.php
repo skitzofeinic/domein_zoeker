@@ -96,9 +96,9 @@ class DomainCartModel {
     public function getTax() {
         $subTotal = $this->getSubTotal();
         $taxRate = VAT_RATE;
-        return $subTotal * $taxRate;
+        return round($subTotal * $taxRate, 2);
     }
     public function getTotal() {
-        return $this->getSubTotal() + $this->getTax();
+        return round($this->getSubTotal() + $this->getTax(), 2);
     }
 }

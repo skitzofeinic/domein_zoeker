@@ -14,20 +14,8 @@ function cartRoute($action, $id) {
         case 'remove':
             $controller->removeFromCart();
             break;
-        case 'view':
-            $controller->getCart();
-            break;
         case 'clear':
             $controller->clearCart();
-            break;
-        case 'subTotal':
-            $controller->getSubTotal();
-            break;
-        case 'tax':
-            $controller->getTax();
-            break;
-        case 'total':
-            $controller->getTotal();
             break;
         default:
             echo '404 Not Found';

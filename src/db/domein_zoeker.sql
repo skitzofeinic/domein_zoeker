@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2025 at 02:45 PM
+-- Generation Time: Feb 13, 2025 at 09:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `domain`, `extension`, `price`, `currency`) VALUES
-(3, 'exa', 'com', 16.80, 'EUR');
+(20, 'exa', 'co', 11.97, 'EUR'),
+(21, 'exa', 'com', 12.45, 'EUR'),
+(22, 'cart', 'com', 14.12, 'EUR');
 
 -- --------------------------------------------------------
 
@@ -50,7 +52,6 @@ INSERT INTO `cart` (`id`, `domain`, `extension`, `price`, `currency`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
   `subtotal` decimal(10,2) DEFAULT NULL,
   `vat` decimal(10,2) DEFAULT NULL,
   `total` decimal(10,2) DEFAULT NULL,
@@ -67,7 +68,9 @@ CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `domain` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL
+  `extension` varchar(10) NOT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `currency` varchar(3) NOT NULL DEFAULT 'EUR'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -101,7 +104,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders`

@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Domain Search</title>
+    <title>Domein Zoeker</title>
     <script src="/domein_zoeker/public/assets/js/search.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="public/assets/css/main.css">
     <link rel="stylesheet" href="public/assets/css/search.css">
 </head>
 <body>
-<a id="orders" href="orders">Orders</a>
+<a id="orders" href="order">Orders</a>
 <a id="cart" href="cart">Cart</a>
 
 <div class="container">

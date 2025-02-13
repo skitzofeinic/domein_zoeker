@@ -30,6 +30,10 @@ form {
     margin: var(--xs) 0 var(--xs) 0;
 }
 
+body {
+    background: var(--third-color);
+}
+
 button {
     background: none;
     outline: none;

@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+}
+
+.order {
+    display: flex;
+    align-items: start;
+    gap: var(--xs);
+    margin: var(--xs);
+    background: var(--sec-color);
+    padding: var(--m);
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: baseline;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--xs);
+    margin-bottom: .5em;
+}
+
+.order-item-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.remove-order-btn {
+    background: var(--button-color);
+}

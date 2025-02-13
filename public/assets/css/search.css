@@ -1,5 +1,4 @@
 .container {
-    background: var(--third-color);
     width: 100%;
     display: flex;
     align-items: center;
@@ -65,7 +64,11 @@ a {
     left: 20px;
 }
 
-
 #cart {
     right: 20px;
+}
+
+.disabled-btn {
+    opacity: 30%;
+    cursor: inherit;
 }
