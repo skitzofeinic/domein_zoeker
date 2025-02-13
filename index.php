@@ -6,12 +6,12 @@ require_once ('src/routes/cartRoute.php');
 require_once('src/routes/orderRoute.php');
 
 
-$basePath = 'domein_zoeker'; // Set your root path
+$basePath = 'domein_zoeker';
 $requestUri = ltrim($_SERVER['REQUEST_URI'], '/');
 
 if (strpos($requestUri, $basePath) === 0) {
-    $requestUri = substr($requestUri, strlen($basePath)); // Remove "domein_zoeker/"
-    $requestUri = ltrim($requestUri, '/'); // Remove any extra leading slashes
+    $requestUri = substr($requestUri, strlen($basePath));
+    $requestUri = ltrim($requestUri, '/');
 }
 
 $parts = explode('/', $requestUri);
@@ -23,16 +23,15 @@ $id = isset($parts[2]) ? $parts[2] : null;
 switch (strtolower($path)) {
     case '':
         header('Location: home');
-        exit();
         break;
     case 'home':
-        homeRoute($action, $id);
+        homeRoute($action);
         break;
     case 'cart':
-        cartRoute($action, $id);
+        cartRoute($action);
         break;
     case 'order':
-        orderRoute($action, $id);
+        orderRoute($action);
         break;
     default:
         echo '404 Not Found';

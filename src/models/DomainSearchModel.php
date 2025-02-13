@@ -1,8 +1,21 @@
 <?php
+/**
+ * Handles domain search operations by interacting with an external API to retrieve domain search results.
+ */
+
 require_once __DIR__ . '/../config/api.php';
 
-class DomainSearchModel {
+class DomainSearchModel
+{
     private $apiUrl = API_URL . 'domains/search?with_price=true';
+
+    /**
+     * Searches for domains by sending a request to an external API with a list of domain names.
+     *
+     * @param array $domainNames An array of domain names to search for, each containing a 'name' and 'extension'.
+     *
+     * @return array The decoded response from the API, containing domain search results. If an error occurs, the response will be null.
+     */
     public function searchDomains($domainNames)
     {
         $payload = json_encode($domainNames);

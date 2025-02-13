@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     let tlds = [];
 
-    // Function to handle adding a TLD (used by both "Add" button and "Enter" key)
+    /**
+     * Add a new TLD to the list if valid and not already present.
+     *
+     * @returns {void}
+     */
     function addTLD() {
         let extension = document.getElementById('extension').value.trim()
-            .replace(/^\.|\.+$/g, '')  // Remove leading/trailing dots
-            .replace(/[^a-zA-Z0-9-]/g, '');  // Allow only letters, numbers, and hyphens
+            .replace(/^\.|\.+$/g, '')
+            .replace(/[^a-zA-Z0-9-]/g, '');
 
-            if (!extension) {
+        if (!extension) {
             alert("No extensions found");
             return;
         }
@@ -18,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        tlds.push({ extension });
+        tlds.push({extension});
         document.getElementById('extension').value = '';
-        addTLDToList(extension);  // Add it to the UI list
+        addTLDToList(extension);
         console.log('TLDs:', tlds);
     }
 
@@ -34,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    /**
+     * Event listener for searching domains when the search button is clicked.
+     *
+     * This function checks if at least one TLD is added and if the domain name is provided before sending a search
+     * request.
+     * It sends the domain and selected TLD extensions to the API, then processes and displays the search
+     * results upon successful response.
+     *
+     * @event click
+     * @returns {void}
+     */
     document.getElementById('search').addEventListener('click', function () {
         if (tlds.length === 0) {
             alert("You must have at least one TLD.");
@@ -74,6 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
+    /**
+     * Populates the search results section with domain availability and pricing information.
+     *
+     * @param {Array} results - Array of domain results, each containing domain name, status, price.
+     * @returns {void}
+     */
     function populateResults(results) {
         const searchResultsDiv = document.getElementById('searchResults');
         searchResultsDiv.innerHTML = '';
@@ -114,12 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
             searchResultsDiv.appendChild(domainDiv);
         });
     }
+
+    /**
+     * Adds the TLD to the displayed list in the DOM.
+     *
+     * @param {string} extension - The TLD extension (e.g., 'com', 'org', etc.).
+     * @returns {void}
+     */
     function addTLDToList(extension) {
         const tldList = document.getElementById('tldList');
         const listItem = document.createElement('p');
         listItem.textContent = extension;
 
-        // Create a Remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'x';
 
@@ -133,6 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
         tldList.appendChild(listItem);
     }
 
+    /**
+     * Handles the click event for adding a domain to the cart.
+     *
+     * @param {Event} event - The event triggered by clicking the "Buy" button for a domain.
+     * @returns {void}
+     */
     function handleBuyButtonClick(event) {
         const button = event.target;
         const domain = button.getAttribute('data-domain').split('.');

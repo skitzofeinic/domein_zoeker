@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const removeOrderButton = document.querySelectorAll('.remove-order-btn');
 
+    /**
+     * Removes the order when the "remove-order-btn" button is clicked.
+     * Sends a POST request with the order ID to remove the specific order.
+     *
+     * @param {Event} event - The event triggered by clicking the "remove-order-btn".
+     * @param {string} id - The ID of the order to be removed.
+     */
     removeOrderButton.forEach(button => {
         button.addEventListener('click', function () {
             const id = this.getAttribute('data-order-id');
