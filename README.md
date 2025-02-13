@@ -1,3 +1,5 @@
+#This project was developed using XAMPP, Apache, and MySQL.
+
 ## Setup Configuration
 
 Before running the application, you need to configure the API credentials. Please follow the steps below:
