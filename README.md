@@ -1,4 +1,4 @@
-#This project was developed using XAMPP, Apache, and MySQL.
+# This project was developed using XAMPP, Apache, and MySQL.
 
 ## Setup Configuration
 
