@@ -27,20 +27,22 @@
                     <p>VAT: <?= htmlspecialchars($order['vat']); ?> EUR</p>
                     <p>Total: <?= htmlspecialchars($order['total']); ?> EUR</p>
                 </div>
-                <button class="remove-order-btn" type="button" data-order-id="<?= htmlspecialchars($order['id']); ?>">Remove</button>
+                <button class="remove-order-btn" type="button" data-order-id="<?= htmlspecialchars($order['id']); ?>">
+                    Remove
+                </button>
             </div>
             <div class="order-item-list">
                 <h3>Domains</h3>
-                    <?php foreach ($orderItems[$order['id']] as $item): ?>
-                        <div class="order-item">
-                            <p>
-                                <?= htmlspecialchars($item['domain']) . '.' . htmlspecialchars($item['extension']); ?>
-                            </p>
-                            <p>
-                                <?= htmlspecialchars($item['price']); ?> EUR
-                            </p>
-                        </div>
-                    <?php endforeach; ?>
+                <?php foreach ($orderItems[$order['id']] as $item): ?>
+                    <div class="order-item">
+                        <p>
+                            <?= htmlspecialchars($item['domain']) . '.' . htmlspecialchars($item['extension']); ?>
+                        </p>
+                        <p>
+                            <?= htmlspecialchars($item['price']); ?> EUR
+                        </p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     <?php endforeach; ?>

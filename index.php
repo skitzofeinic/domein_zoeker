@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once ('src/routes/homeRoute.php');
-require_once ('src/routes/cartRoute.php');
+require_once('src/routes/homeRoute.php');
+require_once('src/routes/cartRoute.php');
 require_once('src/routes/orderRoute.php');
 
 

@@ -11,11 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clearCartButton) {
         clearCartButton.addEventListener('click', function () {
             fetch('cart/clear', {
-                method: 'POST',
-                headers: {
+                method: 'POST', headers: {
                     'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({action: 'clear_cart'}),
+                }, body: JSON.stringify({action: 'clear_cart'}),
             })
                 .then(response => response.json())
                 .then(data => {
@@ -47,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const extension = this.getAttribute('data-extension');
 
             const jsonData = JSON.stringify({
-                domain: domain,
-                extension: extension,
+                domain: domain, extension: extension,
             });
 
             $.ajax({
@@ -75,13 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (checkoutButton) {
         checkoutButton.addEventListener('click', function () {
             $.ajax({
-                url: 'order/place-order',
-                method: 'POST',
-                success: function () {
+                url: 'order/place-order', method: 'POST', success: function () {
                     alert("Order has been placed");
                     window.location.href = 'order';
-                },
-                error: function (error) {
+                }, error: function (error) {
                     console.error(error);
                 }
             })

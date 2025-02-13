@@ -63,18 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const data = tlds.map(tld => ({
-            name: domainName,
-            extension: tld.extension
+            name: domainName, extension: tld.extension
         }));
 
         const jsonData = JSON.stringify(data);
         console.log("Sending data:", jsonData);
 
         $.ajax({
-            url: 'home/search',
-            method: 'POST',
-            contentType: 'application/json',
-            data: jsonData
+            url: 'home/search', method: 'POST', contentType: 'application/json', data: jsonData
         })
             .done(function (response) {
                 console.log('Raw response:', response);
@@ -177,11 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const status = button.getAttribute('data-status');
 
         const jsonData = JSON.stringify({
-            domain: domainName,
-            extension: extension,
-            price: price,
-            currency: currency,
-            status: status,
+            domain: domainName, extension: extension, price: price, currency: currency, status: status,
         });
 
         button.disabled = true;
@@ -189,10 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.classList.add('disabled-btn');
 
         $.ajax({
-            url: 'cart/add',
-            method: 'POST',
-            contentType: 'application/json',
-            data: jsonData
+            url: 'cart/add', method: 'POST', contentType: 'application/json', data: jsonData
         })
             .done(function (response) {
             });
